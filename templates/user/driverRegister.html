@@ -1,0 +1,25 @@
+{% extends 'user/driverDashboard.html' %}
+    {% block driverDash %}
+    <div class="container mt-5">
+        <h3 class="my-4 text-center">Driver Document Upload</h3>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-dark my-5">Upload</button>
+        </form>
+    </div>
+
+
+<script>
+    document.getElementById('id_DVLA_Driving_Licence').className = 'form-control'
+    document.getElementById('id_DVLA_Check_Code').className = 'form-control'
+    document.getElementById('id_Private_Hire_Driver_Badge').className = 'form-control'
+    document.getElementById('id_Private_Hire_Driver_Licence').className = 'form-control'
+    document.getElementById('id_Private_Hire_Vehicla_Licence').className = 'form-control'
+    document.getElementById('id_MOT_Test_Certificate').className = 'form-control'
+    document.getElementById('id_Vehicle_Insurance_Certificate').className = 'form-control'
+    document.getElementById('id_V5C_LogBook_or_New_Keeper_Slip_or_E_LogBook').className = 'form-control'
+    document.getElementById('id_Bank_Statement').className = 'form-control'
+    document.getElementById('id_profile_photo').className = 'form-control'
+</script>
+{% endblock %}

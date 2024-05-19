@@ -1,0 +1,334 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
+    <!-- <meta name="generator" content="Hugo 0.84.0"> -->
+    <title>Eurocabs Admin Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/new-logo.png' %}">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"> -->
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+<style>
+  /* Add these styles to your CSS file or style block in your HTML */
+.messages {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 1000;
+}
+
+/* Style for error messages */
+.messages .error {
+  background-color: #ff6666;
+  color: #fff;
+  border: 1px solid #cc0000;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+/* Style for success messages */
+.messages .success {
+  background-color: #66ff66;
+  color: #000;
+  border: 1px solid #00cc00;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+/* Style for warning messages */
+.messages .warning {
+  background-color: #ffff66;
+  color: #000;
+  border: 1px solid #cccc00;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+</style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="{% static 'img/euro.png'%}" class="img-fluid" width="100px" alt=""></a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="{% url 'userLogout' %}">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link {% block active %}active{%endblock%}" aria-current="page" href="{% url 'adminDashboard' %}">
+              <span data-feather="home"></span>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block complaint %} {%endblock%}" href="{% url 'complaints' %}">
+              <span data-feather="file"></span>
+              <div style="display: flex;"><span>Complaints</span> {% block noti %}{% endblock %}</div>
+            </a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <button style="border: none; outline: none;" class="nav-link bg-light" data-bs-toggle="dropdown" aria-expanded="false">
+              Complaints
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">New</a></li>
+              <li><a class="dropdown-item" href="#">Previous</a></li>
+            </ul>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link {% block airport %} {%endblock%}" href="{% url 'addAirports' %}">
+              <span data-feather="shopping-cart"></span>
+              Airport Rates
+            </a>
+          </li>
+          
+            <a class="nav-link {% block business %} {%endblock%}" href="{% url 'businessForms' %}">
+              <span data-feather="users"></span>
+              Business Query
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link {% block driverApp %} {%endblock%}" href="{% url 'driverFiles' %}">
+              <span data-feather="bar-chart-2"></span>
+              Driver Applications
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% block fleet %} {%endblock%}" href="{% url 'managefleet' %}?q=all">
+              <span data-feather="layers"></span>
+              My Fleet
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link {% block school %} {%endblock%}" href="{% url 'schoolcontractall' %}">
+              <span data-feather="layers"></span>
+              School Contract
+            </a>
+          </li>
+        </ul>
+
+        <!--<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul> -->
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+       
+      </div>
+      {% block content %}
+      <div class="container">
+        <div class="total_numbers">
+          <div class="row">
+            <div class="col-md">
+              <div class="out-box border border-primary shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/com.svg' %}" alt="" style="width: 100px;">
+                  <div class="total mx-2 mt-2 text-start">
+                    <p style="font-size: 30px;" class="text-primary">{{total_complaints}}</p>
+                    <p style="font-size: large;">Total Complaints</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md">
+              <div class="out-box border border-info shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/taxi-front.svg' %}" alt="" style="width: 100px;">
+                  <div class="total mx-2 mt-2 text-info">
+                    <p style="font-size: 30px;" class="text-primary">{{total_Fleet}}</p>
+                    <p style="font-size: large;">Total Vehicles</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md">
+              <div class="out-box border border-danger shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/buildings.svg' %}" alt="" style="width: 100px;" class="img-fluid">
+                  <div class="total mx-2 mt-2 text-danger">
+                    <p style="font-size: 30px;" class="text-primary">{{total_business_query}}</p>
+                    <p style="font-size: large;">Business Query</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md">
+              <div class="out-box border border-light-subtle shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/airplane.svg' %}" alt="" style="width: 100px;">
+                  <div class="total mx-2 mt-2 text-light-subtle">
+                    <p style="font-size: 30px;" class="text-primary">{{total_airports}}</p>
+                    <p style="font-size: large;">Total Airports</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="col-md">
+              <div class="out-box border border-warning shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/geo-alt.svg' %}" alt="" style="width: 100px;">
+                  <div class="total mx-2 mt-2 text-warning">
+                    <p style="font-size: 30px;" class="text-primary">{{total_cities}}</p>
+                    <p style="font-size: large;">Total Towns</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md">
+              <div class="out-box border border-dark shadow my-3" style="width: 300px; height: 130px; border-radius: 10px;">
+                <div class="cont px-4 py-2" style="display: flex;">
+                  <img src="{% static 'img/signpost-split.svg' %}" alt="" style="width: 100px;">
+                  <div class="total mx-2 mt-2 text-dark">
+                    <p style="font-size: 30px;" class="text-primary">{{total_Routes}}</p>
+                    <p style="font-size: large;">Total Routes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+
+        <div id="container" style="width: 95%; margin-top: 4%;" class="p-3 shadow text-center">
+          <p style="font-size: large; font-weight: 800;">Number of Complaints(Month Wise)</p>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      {% endblock %}
+      {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+    </main>
+  </div>
+</div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      let ctx = document.getElementById('myChart').getContext('2d');
+     
+      let months = {{ months|safe }};
+      let data = {{ data|safe }};
+    
+
+      let chart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: months,
+              datasets: [{
+                  label: 'Monthly Data',
+                  data: data,
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: false
+                  }
+              }
+          }
+      });
+  </script>
+  </body>
+</html>
+
+{% block scri %}
+
+{% endblock%}
