@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t^v$ow)l3mhl@8lrb(a2rn(ja&e(k+i5xtu%2sx!8^%a$7q(79'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'eurocabs-863b86618114.herokuapp.com', 'eurocabs.uk']
 
@@ -48,7 +48,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,7 +60,6 @@ MIDDLEWARE = [
 ]
 
 SECURE_SSL_REDIRECT = True
-
 
 ROOT_URLCONF = 'base.urls'
 
