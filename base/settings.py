@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 
-    'corsheaders',
-
     #My Apps
     'accounts',
     'users',
