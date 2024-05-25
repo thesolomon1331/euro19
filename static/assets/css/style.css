@@ -1,22 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Montserrat:wght@200;300;400;700;800&family=Roboto:wght@300;400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  text-decoration: none;
-  font-family: "Montserrat", sans-serif;
+  text-decoration: none ;
+   font-family: "Roboto", sans-serif;
 }
 
 html,
 body {
-  scroll-behavior: smooth;
   height: 100%;
   width: 100%;
-  background: #ffffff;
+  scroll-behavior: smooth;
+  background: #ffffff;
 }
-
 ::-moz-selection {
   color: #000;
   background: #f7b928;
@@ -1171,6 +1170,8 @@ textarea {
 .desc-div p {
   padding: 1vw 0.2vw 1vw 0.5vw;
   text-align: left;
+  font-weight: 500;
+  line-height: 1.5vw;
 }
 
 .areas img {
@@ -1232,8 +1233,12 @@ textarea {
     padding: 4vw 0 0 0;
     font-size: 4vw;
   }
-
+  
   .card-txt h2 {
     font-size: 6vw;
+  }
+  .desc-div p {
+    padding: 1vw 0.2vw 1vw 0.5vw;
+    line-height:6.5vw;
   }
 }
