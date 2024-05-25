@@ -1,14 +1,94 @@
+
 {% extends 'user/driverDashboard.html' %}
+{% load static %}
     {% block driverDash %}
-    <div class="container mt-5">
+    <link rel="stylesheet" href="{% static 'css/driverLogin.css'%}">
+    <!-- <div class="container mt-5">
         <h3 class="my-4 text-center">Driver Document Upload</h3>
         <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{form.as_p}}
             <button class="btn btn-dark my-5">Upload</button>
         </form>
-    </div>
+    </div> -->
 
+    <div class="par">
+        <div class="container">
+            <form id="mainForm" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+              <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col">step 1</div>
+                <div class="step-col">step 2</div>
+                <!-- <div class="step-col">step 3</div> -->
+              </div>
+      
+              <div id="form1" class="form-section">
+                <h2>Driver Document Upload</h2>
+                <!-- <label for="profile">Profile photo:</label>
+                <input type="file" value="Choose file" />
+      
+                <label for="DVLA DL">DVLA Driving Licence:</label>
+                <input type="file" value="Choose file" />
+      
+                <input type="text" placeholder="DVLA Check Code" />
+      
+                <label for="badge">Private Hire Driver Badge:</label>
+                <input type="file" value="Choose file" />
+      
+                <label for="badge">Private Hire Driver Licence:</label>
+                <input type="file" value="Choose file" />
+       -->
+                    {{ form1.as_p }}
+                <div class="btn-box">
+                  <button type="button" id="next1">Next</button>
+                </div>
+              </div>
+      
+              <div id="form2" class="form-section" style="display: none">
+                <h2>Driver Document Upload</h2>
+                <!-- <label for="">Private Hire Vehicle Licence:</label>
+                <input type="file" value="Choose file" />
+      
+                <label for="badge">MOT Test Certificate:</label>
+                <input type="file" value="Choose file" />
+      
+                <label for="badge">Vehicle Insurance Certificate:</label>
+                <input type="file" value="Choose file" />
+      
+                <label for="badge"
+                  >V5C LogBook or New Keeper Slip or E LogBook:</label
+                >
+                <input type="file" value="Choose file" />
+      
+                <label for="badge">Bank Statement:</label>
+                <input type="file" value="Choose file" /> -->
+                {{form2.as_p}}
+      
+                <div class="btn-box">
+                  <button type="button" id="back1">Back</button>
+                  <button type="submit" id="upload">Upload</button>
+                </div>
+              </div>
+      
+              <div id="form3" class="form-section" style="display: none">
+                <h2>Account Details</h2>
+                <input type="number" placeholder="Monthly Credit Amount" />
+                <input type="number" placeholder="Monthly Spend" />
+                <input type="text" placeholder="Authorized By" />
+                <div class="btn-box">
+                  <button type="button" id="back2">Back</button>
+                  <button type="submit" id="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+    </div>
+    
+
+   
+
+<script src="{% static 'js/driverLogin.js' %}"></script>
 
 <script>
     document.getElementById('id_DVLA_Driving_Licence').className = 'form-control'

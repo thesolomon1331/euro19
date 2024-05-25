@@ -1,0 +1,55 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eurocbs Cabs</title>
+    <link rel="stylesheet" href="./Assets/css/businessFrom.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="#" id="mainForm">
+        <div class="step-row">
+          <div id="progress"></div>
+          <div class="step-col">step 1</div>
+          <div class="step-col">step 2</div>
+          <div class="step-col">step 3</div>
+        </div>
+        <div id="form1" class="form-section">
+          <h2>Company Details</h2>
+          <input type="text" placeholder="Company Name" name="companyName" required/>
+          <input type="text" placeholder="Nature Of Business" name="natureOfBusiness" required/>
+          <input type="text" placeholder="Website Address" name="WebsiteAddress"/>
+          <input type="text" placeholder="Year Of Company Established" name="YearCompanyWasEstablished"/>
+          <div class="btn-box">
+            <button type="button" id="next1">Next</button>
+          </div>
+        </div>
+
+        <div id="form2" class="form-section" style="display: none">
+          <h2>Contact Details</h2>
+          <input type="text" placeholder="Name" name="contactName" required/>
+          <input type="text" placeholder="Job Title" name="jobTitle" required />
+          <input type="text" placeholder="Department" name="department"/>
+          <input type="number" placeholder="Contact Number" name="telephoneNumber" required />
+          <input type="email" placeholder="Email Address" name="emailAddress" required />
+          <div class="btn-box">
+            <button type="button" id="back1">Back</button>
+            <button type="button" id="next2">Next</button>
+          </div>
+        </div>
+
+        <div id="form3" class="form-section" style="display: none">
+          <h2>Account Details</h2>
+          <input type="number" placeholder="Monthly Credit Amount" name="monthlyCreditAmount"/>
+          <input type="number" placeholder="Monthly Spend" name="monthlySpend" />
+          <input type="text" placeholder="Authorized By" name="authorisedBy" required/>
+          <div class="btn-box">
+            <button type="button" id="back2">Back</button>
+            <button type="submit" id="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="./Assets/Js/businessForm.js"></script>
+  </body>
+</html>

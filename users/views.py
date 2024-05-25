@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponse
 from .models import ComplaintForm, DriverFiles, Reply
-from .forms import MyBusinessForm, MyDriver
+from .forms import MyBusinessForm, MyDriver, Form1, Form2
 from django.contrib import messages
 from .custom import generate_unique_random_numbers
 import dashboard.models
@@ -161,6 +161,7 @@ def businessForm(request):
     #         data.save()
     #     # else:
     #         # print("Something Went Wrong...")
+
     if request.method == "POST":
         companyName = request.POST['companyName']
         natureOfBusiness = request.POST['natureOfBusiness']
@@ -174,6 +175,8 @@ def businessForm(request):
         monthlyCreditAmount = request.POST['monthlyCreditAmount']
         monthlySpend = request.POST['monthlySpend']
         authorisedBy = request.POST['authorisedBy']
+
+        print(companyName)
 
         form = dashboard.models.businessForm(Company_Name = companyName, Nature_Of_Business = natureOfBusiness, Website_Address = WebsiteAddress, Year_Company_Est = YearCompanyWasEstablished,contactName = contactName, Job_Title = jobTitle,
                                              Department = department,
@@ -189,7 +192,7 @@ def businessForm(request):
             messages.success(request, 'Form Submitted Successfully')
         except:
             return messages.error(request, 'Check Your Inputs..')
-    
+   
     return render(request, 'user/corporate.html')
 
 
@@ -212,6 +215,8 @@ def schools(request):
 from django.contrib.auth.decorators import login_required
 @login_required
 def DriverForm(request):
+    form1 = Form1()
+    form2 = Form2()
     if 'username' in request.session:
         del request.session['username']
     form = MyDriver()
@@ -226,7 +231,9 @@ def DriverForm(request):
         else:
             messages.error(request, 'Something Went Wrong')
     context = {
-        'form': form
+        'form': form,
+        'form1': form1,
+        'form2': form2
     }
     return render(request, 'user/driverRegister.html', context)
 

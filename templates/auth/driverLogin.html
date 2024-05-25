@@ -1,0 +1,78 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eurocbs Cabs</title>
+    <link rel="stylesheet" href="/euro19/static/css/driverLogin.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="#" id="mainForm">
+        <div class="step-row">
+          <div id="progress"></div>
+          <div class="step-col">step 1</div>
+          <div class="step-col">step 2</div>
+          <!-- <div class="step-col">step 3</div> -->
+        </div>
+
+        <div id="form1" class="form-section">
+          <h2>Driver Document Upload</h2>
+          <label for="profile">Profile photo:</label>
+          <input type="file" value="Choose file" />
+
+          <label for="DVLA DL">DVLA Driving Licence:</label>
+          <input type="file" value="Choose file" />
+
+          <input type="text" placeholder="DVLA Check Code" />
+
+          <label for="badge">Private Hire Driver Badge:</label>
+          <input type="file" value="Choose file" />
+
+          <label for="badge">Private Hire Driver Licence:</label>
+          <input type="file" value="Choose file" />
+
+          <div class="btn-box">
+            <button type="button" id="next1">Next</button>
+          </div>
+        </div>
+
+        <div id="form2" class="form-section" style="display: none">
+          <h2>Driver Document Upload</h2>
+          <label for="">Private Hire Vehicle Licence:</label>
+          <input type="file" value="Choose file" />
+
+          <label for="badge">MOT Test Certificate:</label>
+          <input type="file" value="Choose file" />
+
+          <label for="badge">Vehicle Insurance Certificate:</label>
+          <input type="file" value="Choose file" />
+
+          <label for="badge"
+            >V5C LogBook or New Keeper Slip or E LogBook:</label
+          >
+          <input type="file" value="Choose file" />
+
+          <label for="badge">Bank Statement:</label>
+          <input type="file" value="Choose file" />
+
+          <div class="btn-box">
+            <button type="button" id="back1">Back</button>
+            <button type="submit" id="upload">Upload</button>
+          </div>
+        </div>
+
+        <div id="form3" class="form-section" style="display: none">
+          <h2>Account Details</h2>
+          <input type="number" placeholder="Monthly Credit Amount" />
+          <input type="number" placeholder="Monthly Spend" />
+          <input type="text" placeholder="Authorized By" />
+          <div class="btn-box">
+            <button type="button" id="back2">Back</button>
+            <button type="submit" id="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="/euro19/static/js/driverLogin.js"></script>
+  </body>
+</html>
