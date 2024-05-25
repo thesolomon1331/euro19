@@ -218,59 +218,113 @@
                 <p>Reach out to us today to explore how EuroCabs can customize its services to align with the specific
                     requirements of Your Company. Enhance your corporate travel with a premium experience befitting your
                     success. Complete the form below to embark on your corporate journey.</p>
+                <!-- <form id="contact-form" method="POST">
+                    <div id="step1" class="form-section active">
+                        <h2>Company</h2>
+                        <label for="company-name">Company Name:</label>
+                        <input type="text" id="company-name" name="companyName" required /><br />
 
-            </div>
-            <div class="container">
-                <form action="{% url 'businessForm' %}" id="mainForm" method="POST">
-                    {% csrf_token %}
-                    <div class="step-row">
-                        <div id="progress"></div>
-                        <div class="step-col">step 1</div>
-                        <div class="step-col">step 2</div>
-                        <div class="step-col">step 3</div>
-                    </div>
-                    <div id="form1" class="form-section">
-                        <h2>Company Details</h2>
-                        <input type="text" placeholder="Company Name" name="companyName" required />
-                        <input type="text" placeholder="Nature Of Business" name="natureOfBusiness" required />
-                        <input type="text" placeholder="Website Address" name="WebsiteAddress" />
-                        <input type="text" placeholder="Year Of Company Established" name="YearCompanyWasEstablished" />
-                        <div class="btn-box">
-                            <button type="button" id="next1">Next</button>
-                        </div>
+                        <label for="nature-of-business">Nature of Business:</label>
+                        <input type="text" id="nature-of-business" name="natureOfBusiness" required /><br />
+
+                        <label for="website">Website Address:</label>
+                        <input type="text" id="website" name="WebsiteAddress" /><br />
+
+                        <label for="established-year">Year Company was Established:</label>
+                        <input type="text" id="established-year" name="YearCompanyWasEstablished" />
                     </div>
 
-                    <div id="form2" class="form-section" style="display: none">
+                    <div id="step2" class="form-section" style="display: none;">
                         <h2>Contact Details</h2>
-                        <input type="text" placeholder="Name" name="contactName" required />
-                        <input type="text" placeholder="Job Title" name="jobTitle" required />
-                        <input type="text" placeholder="Department" name="department" />
-                        <input type="number" placeholder="Contact Number" name="telephoneNumber" required />
-                        <input type="email" placeholder="Email Address" name="emailAddress" required />
-                        <div class="btn-box">
-                            <button type="button" id="back1">Back</button>
-                            <button type="button" id="next2">Next</button>
-                        </div>
+                        <label for="contact-name">Name:</label>
+                        <input type="text" id="contact-name" name="contactName" required /><br />
+
+                        <label for="job-title">Job Title:</label>
+                        <input type="text" id="job-title" name="jobTitle" required /><br />
+
+                        <label for="department">Department:</label>
+                        <input type="text" id="department" name="department" /><br />
+
+                        <label for="telephone">Telephone Number:</label>
+                        <input type="tel" id="telephone" name="telephoneNumber" required /><br />
+
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="emailAddress" required />
                     </div>
 
-                    <div id="form3" class="form-section" style="display: none">
+                    <div id="step3" class="form-section" style="display: none;">
                         <h2>Account Details</h2>
-                        <input type="number" placeholder="Monthly Credit Amount" name="monthlyCreditAmount" />
-                        <input type="number" placeholder="Monthly Spend" name="monthlySpend" />
-                        <input type="text" placeholder="Authorized By" name="authorisedBy" required />
+                        <label for="credit-amount">Monthly Credit Amount:</label>
+                        <input type="number" id="credit-amount" name="monthlyCreditAmount" /><br />
 
-                        <!-- <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required /><a href="BusinessT&C.html">Agree with the Terms & Conditions</a>: -->
-                        <div class="btn-box">
-                            <button type="button" id="back2">Back</button>
-                            <button type="submit" id="submit">Submit</button>
-                        </div>
+                        <label for="monthly-spend">Monthly Spend:</label>
+                        <input type="number" id="monthly-spend" name="monthlySpend" /><br />
+
+                        <label for="authorized-by">Authorized By:</label>
+                        <input type="text" id="authorized-by" name="authorisedBy" required /><br />
+
+                        <label for="terms-and-conditions">
+                            <a href="BusinessT&C.html">Agree with the Terms & Conditions</a>:
+                        </label>
+                        <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required />
                     </div>
-                </form>
+                    <br />
+
+                    <button type="button" id="nextBtn" onclick="nextStep()">Next</button>
+                    <input type="submit" value="Submit" style="display: none;" id="submitBtn">
+                </form> -->
             </div>
         </div>
     </div>
 
 
+    <div class="container">
+        <form action="{% url 'businessForm' %}" id="mainForm" method="POST">
+            {% csrf_token %}
+            <div class="step-row">
+                <div id="progress"></div>
+                <div class="step-col">step 1</div>
+                <div class="step-col">step 2</div>
+                <div class="step-col">step 3</div>
+            </div>
+            <div id="form1" class="form-section">
+                <h2>Company Details</h2>
+                <input type="text" placeholder="Company Name" name="companyName" required />
+                <input type="text" placeholder="Nature Of Business" name="natureOfBusiness" required />
+                <input type="text" placeholder="Website Address" name="WebsiteAddress" />
+                <input type="text" placeholder="Year Of Company Established" name="YearCompanyWasEstablished" />
+                <div class="btn-box">
+                    <button type="button" id="next1">Next</button>
+                </div>
+            </div>
+
+            <div id="form2" class="form-section" style="display: none">
+                <h2>Contact Details</h2>
+                <input type="text" placeholder="Name" name="contactName" required />
+                <input type="text" placeholder="Job Title" name="jobTitle" required />
+                <input type="text" placeholder="Department" name="department" />
+                <input type="number" placeholder="Contact Number" name="telephoneNumber" required />
+                <input type="email" placeholder="Email Address" name="emailAddress" required />
+                <div class="btn-box">
+                    <button type="button" id="back1">Back</button>
+                    <button type="button" id="next2">Next</button>
+                </div>
+            </div>
+
+            <div id="form3" class="form-section" style="display: none">
+                <h2>Account Details</h2>
+                <input type="number" placeholder="Monthly Credit Amount" name="monthlyCreditAmount" />
+                <input type="number" placeholder="Monthly Spend" name="monthlySpend" />
+                <input type="text" placeholder="Authorized By" name="authorisedBy" required />
+
+                <!-- <input type="checkbox" id="terms-and-conditions" name="terms-and-conditions" required /><a href="BusinessT&C.html">Agree with the Terms & Conditions</a>: -->
+                <div class="btn-box">
+                    <button type="button" id="back2">Back</button>
+                    <button type="submit" id="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">

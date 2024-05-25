@@ -19,50 +19,25 @@ faqItems.forEach((item) => {
 });
 
 // form code
-// let currentStep = 1;
-// const totalSteps = 3;
+let currentStep = 1;
+const totalSteps = 3;
 
-// // Show initial step on page load
-// document.getElementById("step1").style.display = "block";
+// Show initial step on page load
+document.getElementById("step1").style.display = "block";
 
-// function nextStep() {
-//   const currentSection = document.getElementById(step${currentStep});
-//   if (currentStep < totalSteps) {
-//     currentSection.style.display = "none";
-//     currentStep++;
-//     document.getElementById(step${currentStep}).style.display = "block";
+function nextStep() {
+  const currentSection = document.getElementById(`step${currentStep}`);
+  if (currentStep < totalSteps) {
+    currentSection.style.display = "none";
+    currentStep++;
+    document.getElementById(`step${currentStep}`).style.display = "block";
 
-//     if (currentStep === totalSteps) {
-//       document.getElementById("submitBtn").style.display = "block";
-//       document.getElementById("nextBtn").style.display = "none";
-//     }
-//   }
-// }
-
-document.addEventListener("DOMContentLoaded", function () {
-  let currentStep = 1;
-  const formSections = document.querySelectorAll(".form-section");
-  const progress = document.getElementById("progress");
-
-  function showStep(step) {
-    formSections.forEach((section, index) => {
-      section.style.display = index === step - 1 ? "block" : "none";
-    });
-    progress.style.width =` ${180 * step}px`;
+    if (currentStep === totalSteps) {
+      document.getElementById("submitBtn").style.display = "block";
+      document.getElementById("nextBtn").style.display = "none";
+    }
   }
-
-  document.getElementById("next1").addEventListener("click", function () {
-    currentStep = 2;
-    showStep(currentStep);
-  });
-
-  document.getElementById("back1").addEventListener("click", function () {
-    currentStep = 1;
-    showStep(currentStep);
-  });
-
-  showStep(currentStep); // Initialize the form to show the first step
-});
+}
 
 // slider code
 
