@@ -31,9 +31,41 @@
 
 <div class="container shadow p-3">
     <div class="h4 my-4">Daily Update</div>
-    <h5><b>Contract Name: </b> {{data.contract_school_name}}</h5>
-    <p><b>Phone Number: </b> {{data.contact_number}}</p>
-    <form class="row g-3" method="POST">
+    <h5><b>Contract Name: </b> {{data.contract_school_name}}</h5><br>
+    <p><b>Contract Number: </b> {{data.contract_number}}</p>
+    <p><b>Start Date: </b> {{data.start_date}}</p>
+    <p><b>End Date: </b> {{data.end_date}}</p>
+
+    <a href="{% url 'scheduleadd' data.id%}"><button class="btn btn-primary">Schedule</button></a><br><br>
+
+    <h4>Available Schedules</h4>
+    <table class="my-4">
+        <tr>
+            <th>Name</th>
+            <th>Pick Up</th>
+            <th>Drop</th>
+            <th>Vias</th>
+            <th>Price</th>
+            <th>Created</th>
+            <th>Edit</th>
+        </tr>
+        {% for i in schedule %}
+        <tr>
+            <td>{{i.name}}</td>
+          
+            <td>{{i.pickup_location}}</td>
+            <td>{{i.drop_location}}</td>
+            <td>{{i.vias}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.timestamp}}</td>
+            <td><a href="{% url 'scheduleedit' i.id %}"><button class="btn btn-primary">Edit</button></a></td>
+        </tr>
+        {% endfor %}
+            
+    </table>
+
+
+    <form class="row g-3 mx-1" method="POST">
         {% csrf_token %}
 
         <table>

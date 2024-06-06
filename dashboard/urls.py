@@ -46,6 +46,12 @@ urlpatterns = [
     path('contractreport/<str:pk>/', views.ContractReport, name='contractreport'),
 
 
+    #Schedule Views
+    path('scheduleadd/<str:pk>/', views.ScheduleAdd, name='scheduleadd'),
+    path('scheduleedit/<str:pk>/', views.Scheduleedit, name='scheduleedit'),
+    path('scheduledelete/<str:pk>/', views.ScheduleDelete, name='scheduledelete'),
+
+
     #Custom Email Sender
     # path('portmail/', views.PortMail, name='portmail')
 
