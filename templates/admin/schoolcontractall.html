@@ -15,12 +15,9 @@
             <th scope="col">Name</th>
             <th scope="col">Start</th>
             <th scope="col">End</th>
-            <th scope="col">Pick Time</th>
-            <th scope="col">Drop Time</th>
-            <th scope="col">Price</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Pickup</th>
-            <th scope="col">Drop</th>
+          
+            <th scope="col">Contract Number</th>
+           
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -36,12 +33,10 @@
               <td>{{i.contract_school_name}}</td>
               <td>{{i.start_date}}</td>
               <td>{{i.end_date}}</td>
-              <td>{{i.pick_time}}</td>
-              <td>{{i.drop_time}}</td>
-              <td>{{i.price}}</td>
-              <td>{{i.contact_number}}</td>
-              <td>{{i.pick_up_location}}</td>
-              <td>{{i.drop_location}}</td>
+             
+            
+              <td>{{i.contract_number}}</td>
+             
               <td><a href="{% url 'viewschoolcontract' i.id%}"><button class="btn btn-dark">Open</button></a></td>
               
             </tr>
@@ -56,12 +51,10 @@
             <td>{{i.contract_school_name}}</td>
             <td>{{i.start_date}}</td>
             <td>{{i.end_date}}</td>
-            <td>{{i.pick_time}}</td>
-            <td>{{i.drop_time}}</td>
-            <td>{{i.price}}</td>
-            <td>{{i.contact_number}}</td>
-            <td>{{i.pick_up_location}}</td>
-            <td>{{i.drop_location}}</td>
+            
+           
+            <td>{{i.contract_number}}</td>
+         
             <td><a href="{% url 'viewschoolcontract' i.id%}"><button class="btn btn-dark">Open</button></a></td>
 
           </tr>

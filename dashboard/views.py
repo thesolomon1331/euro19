@@ -6,9 +6,9 @@ import users.models
 import users.custom
 import users.forms
 import accounts.models
-from . models import businessForm, Fleet, ReplyCus, Airports, City, Rates, SchoolContract, TrackSchoolContract
+from . models import businessForm, Fleet, ReplyCus, Airports, City, Rates, SchoolContract, TrackSchoolContract, Schedule
 from django.http import HttpResponse, JsonResponse
-from .forms import MyFleets, MyReply, MyAirport, MyCity, MyRates, MySchoolContract
+from .forms import MyFleets, MyReply, MyAirport, MyCity, MyRates, MySchoolContract, ScheduleForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta, timezone, date
@@ -778,6 +778,9 @@ def SchoolContractView(request, pk):
     formatted_today = today.strftime('%Y-%m-%d')
     data = SchoolContract.objects.get(id = pk)
 
+    schedule = Schedule.objects.filter(school = pk)
+    print(schedule)
+
     if request.method == 'POST':
         status = request.POST['status']
         dat = request.POST['date']
@@ -804,7 +807,8 @@ def SchoolContractView(request, pk):
         'today': formatted_today,
         'calendar': html_calendar,
         'year': year, 
-        'month': month
+        'month': month,
+        'schedule': schedule,
     }
     return render(request, 'admin/schoolcontractview.html', context)
 
@@ -899,3 +903,39 @@ def ContractReport(request, pk):
 
 
 
+
+
+def ScheduleAdd(request, pk):
+    form = ScheduleForm()
+    if request.method == 'POST':
+        data = ScheduleForm(request.POST)
+        if data.is_valid():
+            obj = data.save(commit=False)
+            obj.school = SchoolContract.objects.get(id = pk)
+            obj.save()
+    context = {
+        'form': form
+    }
+    return render(request, 'admin/scheduleadd.html', context)
+
+
+def Scheduleedit(request, pk):
+    schedule = Schedule.objects.get(id = pk)
+    form = ScheduleForm(instance=schedule)
+
+    if request.method == 'POST':
+        data = ScheduleForm(request.POST, instance=schedule)
+        if data.is_valid():
+            data.save()
+
+    context = {
+        'form':form,
+        'id':pk
+    }
+    return render(request, 'admin/schedule_edit.html', context)
+
+
+def ScheduleDelete(request, pk):
+    schedule = Schedule.objects.get(id = pk)
+    schedule.delete()
+    return redirect('schoolcontractall')

@@ -7,28 +7,26 @@
 
 {% block content %}
 
-    <form action="" method="POST">
+    <form action="" method="POST" class="mx-5 px-5">
         {% csrf_token %}
         {{form.as_p}}
         <button class="btn btn-primary">Submit</button>
     </form>
 
-    <a href="{% url 'deleteschoolcontract' data.id %}"><button class="btn btn-danger my-4">Delete</button></a>
-
     <script>
-        // document.getElementById('id_start_date').type = 'date'
-        document.getElementById('id_start_date').className = 'form-control'
-
-        document.getElementById('id_contract_school_name').className = 'form-control'
-        // document.getElementById('id_end_date').type = 'date'
-        document.getElementById('id_end_date').className = 'form-control'
+      
+        document.getElementById('id_name').className = 'form-control'
+        document.getElementById('id_pickup_location').className = 'form-control'
+        document.getElementById('id_drop_location').className = 'form-control'
+        document.getElementById('id_price').className = 'form-control'
         // document.getElementById('id_pick_time').className = 'form-control'
         // document.getElementById('id_pick_time').type = 'time'
         // document.getElementById('id_drop_time').className = 'form-control'
-        // document.getElementById('id_drop_time').type = 'time'
         // document.getElementById('id_price').className = 'form-control'
-        document.getElementById('id_contract_number').className = 'form-control'
+        // document.getElementById('id_drop_time').type = 'time'
+        document.getElementById('id_vias').className = 'form-control'
         // document.getElementById('id_pick_up_location').className = 'form-control'
         // document.getElementById('id_drop_location').className = 'form-control'
     </script>
 {% endblock %}
+

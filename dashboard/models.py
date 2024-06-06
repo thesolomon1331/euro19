@@ -117,12 +117,12 @@ class SchoolContract(models.Model):
     contract_school_name = models.CharField(max_length = 100, blank = False, null = True)
     start_date = models.DateField(blank=False)
     end_date = models.DateField(blank=False)
-    pick_time = models.TimeField(blank = False)
-    drop_time = models.TimeField(blank = False)
-    price = models.CharField(max_length = 15, blank = False)
-    contact_number = models.CharField(max_length = 15, blank = False)
-    pick_up_location = models.CharField(max_length =150, blank = False)
-    drop_location = models.CharField(max_length =150, blank = False)
+    # pick_time = models.TimeField(blank = False)
+    # drop_time = models.TimeField(blank = False)
+    # price = models.CharField(max_length = 15, blank = False)
+    contract_number = models.CharField(max_length = 15, blank = False)
+    # pick_up_location = models.CharField(max_length =150, blank = False)
+    # drop_location = models.CharField(max_length =150, blank = False)
 
 
     def __str__(self):
@@ -142,3 +142,19 @@ class TrackSchoolContract(models.Model):
     
     def __str__(self):
         return str(self.contract.id)
+
+
+# Model Which is Going to Be attached to school contract schedule
+class Schedule(models.Model):
+    id = models.UUIDField(primary_key = True, editable = False, default = uuid.uuid4)
+    school = models.ForeignKey(SchoolContract, on_delete = models.PROTECT)
+    name = models.CharField(max_length = 30, blank = False)
+    pickup_location = models.CharField(max_length = 100, blank = False)
+    drop_location = models.CharField(max_length = 100, blank = False)
+    vias = models.CharField(max_length = 100, blank = False)
+    price = models.CharField(max_length = 50, blank = False)
+    timestamp = models.DateTimeField(auto_now_add = True)
+
+
+    def __str__(self):
+        return str(self.name)
